@@ -5,15 +5,30 @@ import NoteListNav from '../NoteListNav/NoteListNav';
 import NotePageNav from '../NotePageNav/NotePageNav';
 import NoteListMain from '../NoteListMain/NoteListMain';
 import NotePageMain from '../NotePageMain/NotePageMain';
+import AddFolder from '../AddFolder/AddFolder';
 import AppContext from './AppContext';
+import ErrorBoundary from '../ErrorBoundary';
 // import {getNotesForFolder, findNote, findFolder} from '../notes-helpers';
 import './App.css';
 
 class App extends Component {
     state = {
         notes: [],
-        folders: []
+        folders: [],
+        error: null
     };
+
+    handleDeleteNote = noteId => {    
+        this.setState({
+            notes: this.state.notes.filter(note => note.id !== noteId)
+        });
+    };
+
+    handleAddFolder = (folder) => {
+        this.setState({
+            folders: [...this.state.folders,folder]
+        });
+    }
 
     componentDidMount() {
       fetch(`http://localhost:9090/folders`)
@@ -54,7 +69,7 @@ class App extends Component {
                     //     return <NotePageNav {...routeProps} folder={folder} />;
                     // }}
                 />
-                <Route path="/add-folder" component={NotePageNav} />
+                <Route path="/add-folder" component={AddFolder} />
                 <Route path="/add-note" component={NotePageNav} />
             </>
         );
@@ -97,23 +112,16 @@ class App extends Component {
             </>
         );
     }
- 
-
-    handleDeleteNote = noteId => {    
-        this.setState({
-            notes: this.state.notes.filter(note => note.id !== noteId)
-        });
-    };
 
     render() {
         const value = {
             notes: this.state.notes,
             folders: this.state.folders,
-            deleteNote: this.handleDeleteNote
-            // ,
-            // addFolder: this.handleAddFolder
+            deleteNote: this.handleDeleteNote,
+            addFolder: this.handleAddFolder
         };
         return (
+            <ErrorBoundary>
             <AppContext.Provider value={value}>
             <div className="App">
                 <nav className="App__nav">{this.renderNavRoutes()}</nav>
@@ -126,6 +134,7 @@ class App extends Component {
                 <main className="App__main">{this.renderMainRoutes()}</main>
             </div>
             </AppContext.Provider>
+            </ErrorBoundary>
         );
        
     }

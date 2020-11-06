@@ -18,7 +18,6 @@ class NoteListMain extends Component{
 static contextType = AppContext
   render(){
     const {notes} = this.context
-    console.log(notes)
     const {folderId} = this.props.match.params
     const notesForFolder = getNotesForFolder(notes,folderId)
     return (
