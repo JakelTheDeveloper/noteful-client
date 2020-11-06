@@ -11,8 +11,6 @@ class AddFolder extends Component {
         }
     }
 
-    
-
     static contextType = AppContext;
 
     validateName(folderName) {
@@ -78,7 +76,7 @@ class AddFolder extends Component {
             <button type="reset" className="addFolder-button" onClick={() => this.props.history.goBack()}>
                 Cancel
             </button>
-            <button type="submit" className="addFolder-button" disabled={this.state.error} onClick={()=> this.props.history.goBack()}>
+            <button type="submit" className="addFolder-button" disabled={this.state.error}>
                 Save Folder
             </button>
            </div>

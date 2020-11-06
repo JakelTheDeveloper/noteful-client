@@ -6,6 +6,7 @@ import NotePageNav from '../NotePageNav/NotePageNav';
 import NoteListMain from '../NoteListMain/NoteListMain';
 import NotePageMain from '../NotePageMain/NotePageMain';
 import AddFolder from '../AddFolder/AddFolder';
+import AddNote from '../AddNote/AddNote';
 import AppContext from './AppContext';
 import ErrorBoundary from '../ErrorBoundary';
 // import {getNotesForFolder, findNote, findFolder} from '../notes-helpers';
@@ -29,6 +30,13 @@ class App extends Component {
             folders: [...this.state.folders,folder]
         });
     }
+
+    handleAddNote = (note) => {
+        this.setState({
+            notes: [...this.state.notes,note]
+        });
+    }
+
 
     componentDidMount() {
       fetch(`http://localhost:9090/folders`)
@@ -70,7 +78,7 @@ class App extends Component {
                     // }}
                 />
                 <Route path="/add-folder" component={AddFolder} />
-                <Route path="/add-note" component={NotePageNav} />
+                <Route path="/add-note" component={AddNote} />
             </>
         );
     }
@@ -118,7 +126,8 @@ class App extends Component {
             notes: this.state.notes,
             folders: this.state.folders,
             deleteNote: this.handleDeleteNote,
-            addFolder: this.handleAddFolder
+            addFolder: this.handleAddFolder,
+            addNote: this.handleAddNote
         };
         return (
             <ErrorBoundary>
