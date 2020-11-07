@@ -5,6 +5,7 @@ import Note from '../Note/Note'
 import CircleButton from '../CircleButton/CircleButton'
 import './NoteListMain.css'
 import AppContext from '../App/AppContext';
+import PropTypes from 'prop-types';
 import { getNotesForFolder } from '../notes-helpers'
 
 
@@ -48,6 +49,12 @@ static contextType = AppContext
       </section>
     )
   }
+}
+
+NoteListMain.propTypes = {
+  match: PropTypes.shape({
+    params: PropTypes.object
+  })
 }
 
 export default  NoteListMain

@@ -85,11 +85,16 @@ class AddFolder extends Component {
     }
 }
 AddFolder.defaultProps = {
-    name:''
+    id:1,
+    deleteFolder:()=>{},
+    url: ''
 }
 
 AddFolder.propTypes = {
-    name: PropTypes.string.isRequired
-};
+    id: PropTypes.number.isRequired,
+    deleteFolder: PropTypes.func.isRequired,
+    url:PropTypes.string.isRequired,
+
+  }
 
 export default AddFolder;
