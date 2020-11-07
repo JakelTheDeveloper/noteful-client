@@ -19,12 +19,6 @@ class AddFolder extends Component {
     validateName(folderName) {
         const name = folderName.trim();
         return (name.length === 0 ? 'folder name required' : false);
-        // if(name.length === 0){
-        //     return 'Folder name required'
-        // }else{
-
-        // }
-        // this.setState({name: {value: name}});
     }
 
     clearError = () => {
