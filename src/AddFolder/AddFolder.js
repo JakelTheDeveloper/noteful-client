@@ -8,11 +8,13 @@ class AddFolder extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            error: null
+            error: null,
         }
     }
-
-
+   
+    // static defaultProps = {
+    //     name: ''
+    // };
 
     static contextType = AppContext;
 
@@ -28,7 +30,6 @@ class AddFolder extends Component {
     }
     handleSubmit(event) {
         event.preventDefault();
-        // const{name} = this.state;
         const name = event.target.folderName.value;
         const error = this.validateName(name)
         if (error) {
@@ -37,7 +38,9 @@ class AddFolder extends Component {
             const url = 'http://localhost:9090/folders';
             const options = {
                 method: 'POST',
-                body: JSON.stringify({ name: name }),
+                body: JSON.stringify({
+                    name: name
+                }),
                 headers: { 'Content-Type': 'application/json' }
             }
             fetch(url, options)
@@ -80,6 +83,9 @@ class AddFolder extends Component {
             </form>
         )
     }
+}
+AddFolder.defaultProps = {
+    name:''
 }
 
 AddFolder.propTypes = {

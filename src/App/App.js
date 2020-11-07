@@ -67,18 +67,11 @@ class App extends Component {
                         // )}
                     />
                 ))}
-                <Route
-                    path="/note/:noteId"
-                    component={NotePageNav}
-                    //     routeProps => {
-                    //     const {noteId} = routeProps.match.params;
-                    //     const note = findNote(notes, noteId) || {};
-                    //     const folder = findFolder(folders, note.folderId);
-                    //     return <NotePageNav {...routeProps} folder={folder} />;
-                    // }}
-                />
-                <Route path="/add-folder" component={AddFolder} />
-                <Route path="/add-note" component={AddNote} />
+                <Route path="/note/:noteId" component={NotePageNav}/>
+                <Route path="/add-note" component={NotePageNav} />
+                <Route path="/add-folder" component={NotePageNav} />
+                {/* <Route path="/add-folder" component={AddFolder} /> */}
+                {/* <Route path="/add-note" component={AddNote} /> */}
             </>
         );
     }
@@ -108,15 +101,9 @@ class App extends Component {
                         // }}
                     />
                 ))}
-                <Route
-                    path="/note/:noteId"
-                    component={NotePageMain}
-                        // routeProps => {
-                        // const {noteId} = routeProps.match.params;
-                        // const note = findNote(notes, noteId);
-                        // return <NotePageMain {...routeProps} note={note} />;
-                    // }}
-                />
+                 <Route path="/add-folder" component={AddFolder} />
+                <Route path="/note/:noteId" component={NotePageMain} />
+                <Route path="/add-note" component={AddNote} />
             </>
         );
     }

@@ -12,15 +12,14 @@ class AddNote extends Component {
         }
     }
   
-    static defaultProps = {
-        options:[]
-    };
+    
 
     static contextType = AppContext;
 
     validateNoteName(valueName,valueContent) {
         const name = valueName.trim();
         const content = valueContent.trim();
+       
         if (name.length === 0) {
             return 'Name of note is required'
         }else if(content.length === 0){
@@ -122,8 +121,17 @@ class AddNote extends Component {
     }
 }
 
+AddNote.defaultProps = {
+    name:'',
+    content:'',
+    folderId:1
+}
+
+
 AddNote.propTypes = {
     name: PropTypes.string.isRequired,
+    content: PropTypes.string.isRequired,
+    folderId: PropTypes.number.isRequired,
 };
 
 export default AddNote;
