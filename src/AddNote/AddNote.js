@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import ValidationError from '../ValidationError';
 import AppContext from '../App/AppContext';
+import PropTypes from 'prop-types';
 // import './AddNote.css';
 
 class AddNote extends Component {
@@ -10,7 +11,7 @@ class AddNote extends Component {
             error: null
         }
     }
-
+  
     static defaultProps = {
         options:[]
     };
@@ -94,7 +95,7 @@ class AddNote extends Component {
                 <h2>Add a Note</h2>
                 <div className='form-group'>
                     <label htmlFor='note-name'>Name of Note: </label>
-                    <input type='text' className='note-name' id='note-name' name='noteName' required />
+                    <input type='text' className='note-name' id='note-name' name='noteName' />
                     {this.state.error && (<ValidationError message={this.state.error} clearError={this.clearError} />)}
                     <div className='textarea-content'>
                         <label htmlFor='note__content'>Note content: </label>
@@ -117,5 +118,11 @@ class AddNote extends Component {
         )
     }
 }
+
+AddNote.propTypes = {
+    name: PropTypes.string.isRequired,
+    content: PropTypes.string.isRequired,
+
+};
 
 export default AddNote;
