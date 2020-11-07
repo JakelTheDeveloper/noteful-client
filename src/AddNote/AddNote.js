@@ -18,10 +18,13 @@ class AddNote extends Component {
 
     static contextType = AppContext;
 
-    validateNoteName(value) {
-        const name = value.trim();
+    validateNoteName(valueName,valueContent) {
+        const name = valueName.trim();
+        const content = valueContent.trim();
         if (name.length === 0) {
             return 'Name of note is required'
+        }else if(content.length === 0){
+            return 'Note content required'
         } else {
             return false
         }
@@ -49,7 +52,7 @@ class AddNote extends Component {
         }
         const noteModified = getCurrentDateTimeMySql();
 
-        const error = this.validateNoteName(noteName);
+        const error = this.validateNoteName(noteName,noteContent);
 
         if (error) {
             this.setState({
