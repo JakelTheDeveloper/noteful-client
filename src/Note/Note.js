@@ -2,11 +2,19 @@ import React, {Component} from 'react'
 import { Link } from 'react-router-dom'
 import { format } from 'date-fns'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import AppContext from './../App/AppContext';
+import AppContext from './../App/AppContext'
+import PropTypes from 'prop-types'
 import './Note.css'
 
 export default class Note extends Component {
   static defaultProps ={
+    note:{
+      note_name:'',
+      id: 1,
+      modified:'',
+      folder_id: 1,
+      note_content:''
+    },
     onDeleteNote: () => {},
   }
   static contextType = AppContext;
@@ -67,4 +75,15 @@ export default class Note extends Component {
       </div>
     )
   }
+}
+
+Note.propTypes = {
+  note: PropTypes.shape({
+    id: PropTypes.number.isRequired,
+    note_name: PropTypes.string.isRequired,
+    modified: PropTypes.string,
+    folder_id: PropTypes.number.isRequired,
+    note_content: PropTypes.string.isRequired
+  }),
+  onDeleteNote: PropTypes.func
 }
