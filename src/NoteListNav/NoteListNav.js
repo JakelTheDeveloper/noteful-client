@@ -3,7 +3,7 @@ import { NavLink, Link } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import CircleButton from '../CircleButton/CircleButton'
 import { countNotesForFolder } from '../notes-helpers'
-import AppContext from '../App/AppContext';
+import AppContext from '../App/AppContext'
 import './NoteListNav.css'
 
 
@@ -46,5 +46,6 @@ const {folders = [],notes = []} = this.context;
     )
   }
 }
+
 
 export default  NoteListNav
