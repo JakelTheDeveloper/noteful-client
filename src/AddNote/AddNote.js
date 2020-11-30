@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import ValidationError from '../ValidationError';
 import AppContext from '../App/AppContext';
 import PropTypes from 'prop-types';
+import config from '../config';
 // import './AddNote.css';
 
 class AddNote extends Component {
@@ -59,7 +60,7 @@ class AddNote extends Component {
             })
         } else {
             //submit these values to the server here
-            const url = 'http://localhost:9090/notes'
+            const url = `${config.URL}/notes`
             const options = {
                 method: 'POST',
                 body: JSON.stringify({

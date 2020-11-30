@@ -9,6 +9,7 @@ import AddFolder from '../AddFolder/AddFolder';
 import AddNote from '../AddNote/AddNote';
 import AppContext from './AppContext';
 import ErrorBoundary from '../ErrorBoundary';
+import config from '../config';
 // import {getNotesForFolder, findNote, findFolder} from '../notes-helpers';
 import './App.css';
 
@@ -39,10 +40,10 @@ class App extends Component {
 
 
     componentDidMount() {
-      fetch(`http://localhost:9090/folders`)
+      fetch(`${config.URL}/folders`)
       .then(response => response.json())
       .then(folders => this.setState({folders}))
-    fetch(`http://localhost:9090/notes`)
+    fetch(`${config.URL}/notes`)
       .then((response) => response.json())
       .then((notes) => this.setState({notes}));
     }

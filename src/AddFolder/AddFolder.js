@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import ValidationError from '../ValidationError';
 import AppContext from '../App/AppContext';
 import PropTypes from 'prop-types';
+import config from '../config';
 import './AddFolder.css';
 
 class AddFolder extends Component {
@@ -35,7 +36,7 @@ class AddFolder extends Component {
         if (error) {
             this.setState({ error })
         } else {
-            const url = 'http://localhost:9090/folders';
+            const url = `${config.URL}/folders`;
             const options = {
                 method: 'POST',
                 body: JSON.stringify({
