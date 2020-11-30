@@ -66,7 +66,7 @@ class AddNote extends Component {
                 body: JSON.stringify({
                     name: noteName,
                     content: noteContent,
-                    folderId: noteFolderId,
+                    folderId: parseInt(noteFolderId),
                     modified: noteModified
                 }),
                 headers: { 'Content-Type': 'application/json' }

@@ -4,6 +4,7 @@ import { format } from 'date-fns'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import AppContext from './../App/AppContext'
 import PropTypes from 'prop-types'
+import config from '../config'
 import './Note.css'
 
 export default class Note extends Component {
@@ -23,7 +24,7 @@ export default class Note extends Component {
     e.preventDefault()
     const noteId = this.props.id
 
-    fetch(`http://localhost:9090/notes/${noteId}`, {
+    fetch(`${config.URL}/notes/${noteId}`, {
       method: 'DELETE',
       headers: {
         'content-type': 'application/json'
@@ -32,7 +33,7 @@ export default class Note extends Component {
       .then(res => {
         if (!res.ok)
           return res.json().then(e => Promise.reject(e))
-        return res.json()
+        // return res.json()
       })
       .then(() => {
         //this.context.props.deleteNote(note)

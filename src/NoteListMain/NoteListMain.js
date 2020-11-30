@@ -20,7 +20,7 @@ static contextType = AppContext
   render(){
     const {notes} = this.context
     const {folderId} = this.props.match.params
-    const notesForFolder = getNotesForFolder(notes,folderId)
+    const notesForFolder = getNotesForFolder(notes,parseInt(folderId))
     return (
       <section className='NoteListMain'>
         <ul>
